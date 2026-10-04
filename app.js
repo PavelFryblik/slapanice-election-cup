@@ -1,54 +1,290 @@
-const LISTS = [{"id": 1, "name": "Nezávislí92", "candidates": [{"rank": 1, "name": "Velan Michal"}, {"rank": 2, "name": "Prosecká Alena"}, {"rank": 3, "name": "Vostal Petr"}, {"rank": 4, "name": "Častulík Jakub"}, {"rank": 5, "name": "Holásek Štěpán"}, {"rank": 6, "name": "Kříž Jakub"}, {"rank": 7, "name": "Zouharová Jolana"}, {"rank": 8, "name": "Bednářová Daniela"}, {"rank": 9, "name": "Martínek Zdeněk"}, {"rank": 10, "name": "Velecký Jakub"}, {"rank": 11, "name": "Macháčková Pavlína"}, {"rank": 12, "name": "Palásek Milan"}, {"rank": 13, "name": "Vaňatka Tomáš"}, {"rank": 14, "name": "Klepáč Vladimír"}, {"rank": 15, "name": "Vaňatková Kateřina"}, {"rank": 16, "name": "Schäffer Jiří"}, {"rank": 17, "name": "Polášková Eva"}]}, {"id": 2, "name": "VIZE pro Šlapanice", "candidates": [{"rank": 1, "name": "Bajerová Eva Marie"}, {"rank": 2, "name": "Řezníčková Alena"}, {"rank": 3, "name": "Kadlc Zdeněk"}, {"rank": 4, "name": "Tesař Jakub"}, {"rank": 5, "name": "Čegan Slavoj"}, {"rank": 6, "name": "Sova Michael"}, {"rank": 7, "name": "Sovová Kateřina"}, {"rank": 8, "name": "Štěpánek Zdeněk"}, {"rank": 9, "name": "Růža Tomáš"}, {"rank": 10, "name": "Kareš Petr"}, {"rank": 11, "name": "Hašek Radoslav"}, {"rank": 12, "name": "Kadlcová Eva"}, {"rank": 13, "name": "Slavík Vojtěch"}, {"rank": 14, "name": "Bajerová Kristina"}, {"rank": 15, "name": "Mrkvica Miroslav"}, {"rank": 16, "name": "Musil Jan"}, {"rank": 17, "name": "Fiala Antonín"}]}, {"id": 3, "name": "Společně za Šlapanice", "candidates": [{"rank": 1, "name": "Krček Pavel"}, {"rank": 2, "name": "Horák Pavel"}, {"rank": 3, "name": "Staňková Anežka"}, {"rank": 4, "name": "Švehlová Markéta"}, {"rank": 5, "name": "Králová Marie"}, {"rank": 6, "name": "Charvát Libor"}, {"rank": 7, "name": "Vavro Ivan"}, {"rank": 8, "name": "Merclová Eva"}, {"rank": 9, "name": "Otruba Tomáš"}, {"rank": 10, "name": "Koudelka Jakub"}, {"rank": 11, "name": "Bednář Radek"}, {"rank": 12, "name": "Buchtová Eliška"}, {"rank": 13, "name": "Sedláček Filip"}, {"rank": 14, "name": "Vilímek Marek"}, {"rank": 15, "name": "Melicharová Iveta"}, {"rank": 16, "name": "Vlkojan Zdeněk"}, {"rank": 17, "name": "Zycháček Jan"}]}, {"id": 4, "name": "Čisté Šlapanice", "candidates": [{"rank": 1, "name": "Trněná Michaela"}, {"rank": 2, "name": "Růžička Radek"}, {"rank": 3, "name": "Kopeček Jiří"}, {"rank": 4, "name": "Kinclová Anežka"}, {"rank": 5, "name": "Josková Lucie"}, {"rank": 6, "name": "Staněk Miroslav"}, {"rank": 7, "name": "Něnička Jakub"}, {"rank": 8, "name": "Mikuška Pavel"}, {"rank": 9, "name": "Linhart Pavel"}, {"rank": 10, "name": "Dočkal Jaroslav"}, {"rank": 11, "name": "Tůma Ivan"}, {"rank": 12, "name": "Novotný Jan"}, {"rank": 13, "name": "Feik David"}, {"rank": 14, "name": "Hloušková Šárka"}, {"rank": 15, "name": "Bednářová Tereza"}, {"rank": 16, "name": "Pojzl Zdeněk"}, {"rank": 17, "name": "Reiter Miloslav"}]}, {"id": 5, "name": "SNK pro Šlapanice", "candidates": [{"rank": 1, "name": "Hermann Vojtěch"}, {"rank": 2, "name": "Klaška Michal"}, {"rank": 3, "name": "Křápková Hana"}, {"rank": 4, "name": "Zeman Jan"}, {"rank": 5, "name": "Jiráčková Eva"}, {"rank": 6, "name": "Sedláček David"}, {"rank": 7, "name": "Pacutová Anna"}, {"rank": 8, "name": "Horák Libor"}, {"rank": 9, "name": "Holásková Ivana"}, {"rank": 10, "name": "Novák Marek"}, {"rank": 11, "name": "Procházková Klára"}, {"rank": 12, "name": "Létal Milan"}, {"rank": 13, "name": "Hůrka Jiří"}, {"rank": 14, "name": "Míčová Eva"}, {"rank": 15, "name": "Křikavová Petra"}, {"rank": 16, "name": "Ragasová Ivana"}, {"rank": 17, "name": "Podborský Jan"}]}, {"id": 6, "name": "Piráti Šlapanice & friends", "candidates": [{"rank": 1, "name": "Migdau Kateřina"}, {"rank": 2, "name": "Fryblíková Barbora"}, {"rank": 3, "name": "Mann Tomáš"}, {"rank": 4, "name": "Migdau Šefl Tomáš"}, {"rank": 5, "name": "Bazovská Lenka"}, {"rank": 6, "name": "Pavelka Štěpán"}, {"rank": 7, "name": "Příkrá Kateřina"}, {"rank": 8, "name": "Nikulenkov Fedor"}, {"rank": 9, "name": "Müller Jaromír"}, {"rank": 10, "name": "Leflerová Denisa"}, {"rank": 11, "name": "Hloušek Samuel"}, {"rank": 12, "name": "Urbánková Terezie"}, {"rank": 13, "name": "Matušková Petra"}, {"rank": 14, "name": "Sobotková Markéta"}, {"rank": 15, "name": "Nikulenkov Grochová Diana"}, {"rank": 16, "name": "Fryblík Pavel"}, {"rank": 17, "name": "Mannová Sára"}]}];
-const partyBox = document.querySelector('#partyPredictions');
-const seatBox = document.querySelector('#seatPredictions');
-const jumper = document.querySelector('#jumper');
-const mostVotes = document.querySelector('#mostVotes');
-const biggestGap = document.querySelector('#biggestGap');
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz8M9exFzOS1h2FOEfpcWNlGQZ4Z0Jq4vCGkpKoTmI0pDt52zKneQnD_-00EbvT76k8LA/exec";
 
-LISTS.forEach(p=>{
-  partyBox.insertAdjacentHTML('beforeend', `<div class="party-row"><div class="party-name">${p.name}<small>${p.candidates.length} kandidátů</small></div><input class="party-pct" data-id="${p.id}" type="number" min="0" max="100" step="1" placeholder="%"></div>`);
-  seatBox.insertAdjacentHTML('beforeend', `<div class="seat-row"><div class="party-name">${p.name}</div><input class="party-seat" data-id="${p.id}" type="number" min="0" max="17" step="1" placeholder="mandáty"></div>`);
-  p.candidates.forEach(c=>{
-    const opt = `<option value="${p.id}:${c.rank}">${p.name} — ${c.rank}. ${c.name}</option>`;
-    jumper.insertAdjacentHTML('beforeend', opt);
-    mostVotes.insertAdjacentHTML('beforeend', opt);
-    biggestGap.insertAdjacentHTML('beforeend', opt);
+const PARTIES = [
+  {
+    name: "Nezávislí92",
+    candidates: [
+      "Velan Michal","Prosecká Alena","Vostal Petr","Častulík Jakub","Holásek Štěpán",
+      "Kříž Jakub","Zouharová Jolana","Bednářová Daniela","Martínek Zdeněk","Velecký Jakub",
+      "Macháčková Pavlína","Palásek Milan","Vaňatka Tomáš","Klepáč Vladimír","Vaňatková Kateřina",
+      "Schäffer Jiří","Polášková Eva"
+    ]
+  },
+  {
+    name: "VIZE pro Šlapanice",
+    candidates: [
+      "Bajerová Eva Marie","Řezníčková Alena","Kadlc Zdeněk","Tesař Jakub","Čegan Slavoj",
+      "Sova Michael","Sovová Kateřina","Štěpánek Zdeněk","Růža Tomáš","Kareš Petr",
+      "Hašek Radoslav","Kadlcová Eva","Slavík Vojtěch","Bajerová Kristina","Mrkvica Miroslav",
+      "Musil Jan","Fiala Antonín"
+    ]
+  },
+  {
+    name: "Společně za Šlapanice",
+    candidates: [
+      "Krček Pavel","Horák Pavel","Staňková Anežka","Švehlová Markéta","Králová Marie",
+      "Charvát Libor","Vavro Ivan","Merclová Eva","Otruba Tomáš","Koudelka Jakub",
+      "Bednář Radek","Buchtová Eliška","Sedláček Filip","Vilímek Marek","Melicharová Iveta",
+      "Vlkojan Zdeněk","Zycháček Jan"
+    ]
+  },
+  {
+    name: "Čisté Šlapanice",
+    candidates: [
+      "Trněná Michaela","Růžička Radek","Kopeček Jiří","Kinclová Anežka","Josková Lucie",
+      "Staněk Miroslav","Něnička Jakub","Mikuška Pavel","Linhart Pavel","Dočkal Jaroslav",
+      "Tůma Ivan","Novotný Jan","Feik David","Hloušková Šárka","Bednářová Tereza",
+      "Pojzl Zdeněk","Reiter Miloslav"
+    ]
+  },
+  {
+    name: "SNK pro Šlapanice",
+    candidates: [
+      "Hermann Vojtěch","Klaška Michal","Křápková Hana","Zeman Jan","Jiráčková Eva",
+      "Sedláček David","Pacutová Anna","Horák Libor","Holásková Ivana","Novák Marek",
+      "Procházková Klára","Létal Milan","Hůrka Jiří","Míčová Eva","Křikavová Petra",
+      "Ragasová Ivana","Podborský Jan"
+    ]
+  },
+  {
+    name: "Piráti Šlapanice & friends",
+    candidates: [
+      "Migdau Kateřina","Fryblíková Barbora","Mann Tomáš","Migdau Šefl Tomáš","Bazovská Lenka",
+      "Pavelka Štěpán","Příkrá Kateřina","Nikulenkov Fedor","Müller Jaromír","Leflerová Denisa",
+      "Hloušek Samuel","Urbánková Terezie","Matušková Petra","Sobotková Markéta",
+      "Nikulenkov Grochová Diana","Fryblík Pavel","Mannová Sára"
+    ]
+  }
+];
+
+function createPartyInputs() {
+  const container = document.getElementById("partyPredictions");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  PARTIES.forEach((party, i) => {
+    const label = document.createElement("label");
+    label.innerHTML = `
+      ${i + 1}. ${party.name}
+      <input id="party_${i + 1}_pct"
+             type="number"
+             min="0"
+             max="100"
+             step="1"
+             inputmode="numeric"
+             placeholder="%">
+    `;
+    container.appendChild(label);
   });
-});
+}
 
-document.querySelector('#submit').addEventListener('click', ()=>{
-  const player = document.querySelector('#player').value.trim();
-  const turnout = Number(document.querySelector('#turnout').value);
-  const pcts = [...document.querySelectorAll('.party-pct')].map(x=>Number(x.value));
-  const seats = [...document.querySelectorAll('.party-seat')].map(x=>Number(x.value));
-  if(!player) return show('Napiš přezdívku.');
-  if(pcts.some(x=>!Number.isInteger(x)||x<0||x>100)) return show('Vyplň procenta všech 6 kandidátek jako celá čísla.');
-  if(seats.some(x=>!Number.isInteger(x)||x<0||x>17)) return show('Vyplň mandáty všech 6 kandidátek.');
-  if(seats.reduce((a,b)=>a+b,0)!==17) return show('Mandáty musí dohromady dávat přesně 17.');
-  if(!Number.isInteger(turnout)||turnout<0||turnout>100) return show('Volební účast musí být celé číslo 0–100.');
-  const tip = {player,turnout,pcts,seats,jumper:jumper.value,mostVotes:mostVotes.value,biggestGap:biggestGap.value,topVotes:Number(document.querySelector('#topVotes').value),createdAt:new Date().toISOString()};
-  submitTip(tip);
-});
-function show(t){document.querySelector('#message').textContent=t;}
+function createSeatInputs() {
+  const container = document.getElementById("seatPredictions");
+  if (!container) return;
 
-const APPS_SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+  container.innerHTML = "";
 
-async function submitTip(tip){
-  const btn = document.querySelector('#submit');
-  btn.disabled = true;
-  show('⏳ Odesílám tip…');
+  PARTIES.forEach((party, i) => {
+    const label = document.createElement("label");
+    label.innerHTML = `
+      ${i + 1}. ${party.name}
+      <input id="party_${i + 1}_mandates"
+             type="number"
+             min="0"
+             max="17"
+             step="1"
+             inputmode="numeric"
+             placeholder="mandáty">
+    `;
+    container.appendChild(label);
+  });
+}
+
+function allCandidates() {
+  const result = [];
+
+  PARTIES.forEach((party) => {
+    party.candidates.forEach((candidate, index) => {
+      result.push({
+        name: candidate,
+        party: party.name,
+        position: index + 1
+      });
+    });
+  });
+
+  return result;
+}
+
+function fillCandidateSelect(id) {
+  const select = document.getElementById(id);
+  if (!select) return;
+
+  select.innerHTML = '<option value="">— Vyber kandidáta —</option>';
+
+  PARTIES.forEach((party) => {
+    const group = document.createElement("optgroup");
+    group.label = party.name;
+
+    party.candidates.forEach((candidate, index) => {
+      const option = document.createElement("option");
+      option.value = candidate;
+      option.textContent = `${index + 1}. ${candidate}`;
+      group.appendChild(option);
+    });
+
+    select.appendChild(group);
+  });
+}
+
+function validateIntegerInput(id, min, max) {
+  const element = document.getElementById(id);
+  if (!element) return null;
+
+  const value = element.value.trim();
+  if (value === "") return null;
+
+  const number = Number(value);
+
+  if (!Number.isInteger(number) || number < min || number > max) {
+    return null;
+  }
+
+  return number;
+}
+
+function collectTip() {
+  const nickname = document.getElementById("player")?.value.trim();
+
+  if (!nickname) {
+    throw new Error("Vyplň přezdívku.");
+  }
+
+  const tip = {
+    nickname: nickname,
+
+    party_1_pct: validateIntegerInput("party_1_pct", 0, 100),
+    party_2_pct: validateIntegerInput("party_2_pct", 0, 100),
+    party_3_pct: validateIntegerInput("party_3_pct", 0, 100),
+    party_4_pct: validateIntegerInput("party_4_pct", 0, 100),
+    party_5_pct: validateIntegerInput("party_5_pct", 0, 100),
+    party_6_pct: validateIntegerInput("party_6_pct", 0, 100),
+
+    turnout: validateIntegerInput("turnout", 0, 100),
+
+    party_1_mandates: validateIntegerInput("party_1_mandates", 0, 17),
+    party_2_mandates: validateIntegerInput("party_2_mandates", 0, 17),
+    party_3_mandates: validateIntegerInput("party_3_mandates", 0, 17),
+    party_4_mandates: validateIntegerInput("party_4_mandates", 0, 17),
+    party_5_mandates: validateIntegerInput("party_5_mandates", 0, 17),
+    party_6_mandates: validateIntegerInput("party_6_mandates", 0, 17),
+
+    jumper: document.getElementById("jumper")?.value || "",
+    most_votes: document.getElementById("mostVotes")?.value || "",
+    top_votes: validateIntegerInput("topVotes", 0, 100000),
+
+    // Zachováno kvůli kompatibilitě se současným Code.gs.
+    // Tato disciplína už není ve formuláři.
+    biggest_gap: ""
+  };
+
+  const pctFields = [
+    "party_1_pct","party_2_pct","party_3_pct",
+    "party_4_pct","party_5_pct","party_6_pct"
+  ];
+
+  const missingPct = pctFields.some((id) => tip[id] === null);
+  if (missingPct) {
+    throw new Error("Vyplň procenta všech 6 kandidátek.");
+  }
+
+  if (tip.turnout === null) {
+    throw new Error("Vyplň volební účast.");
+  }
+
+  const mandateFields = [
+    "party_1_mandates","party_2_mandates","party_3_mandates",
+    "party_4_mandates","party_5_mandates","party_6_mandates"
+  ];
+
+  const missingMandates = mandateFields.some((id) => tip[id] === null);
+  if (missingMandates) {
+    throw new Error("Rozděl všech 17 mandátů.");
+  }
+
+  const mandateSum = mandateFields.reduce((sum, id) => sum + tip[id], 0);
+
+  if (mandateSum !== 17) {
+    throw new Error(`Mandáty musí dát dohromady přesně 17. Nyní máš ${mandateSum}.`);
+  }
+
+  if (!tip.jumper) {
+    throw new Error("Vyber Skokana voleb.");
+  }
+
+  if (!tip.most_votes) {
+    throw new Error("Vyber kandidáta s nejvíce preferenčními hlasy.");
+  }
+
+  if (tip.top_votes === null) {
+    throw new Error("Vyplň přesný počet hlasů nejúspěšnějšího kandidáta.");
+  }
+
+  return tip;
+}
+
+async function submitTip() {
+  const button = document.getElementById("submit");
+  const message = document.getElementById("message");
+
   try {
-    if (APPS_SCRIPT_URL.includes("PASTE_YOUR")) throw new Error("Nejdřív nastav URL Google Apps Scriptu v app.js.");
-    const response = await fetch(APPS_SCRIPT_URL, {
+    const tip = collectTip();
+
+    button.disabled = true;
+    button.textContent = "⏳ Odesílám…";
+
+    message.textContent = "";
+
+    await fetch(APPS_SCRIPT_URL, {
       method: "POST",
       mode: "no-cors",
-      headers: {"Content-Type":"text/plain;charset=utf-8"},
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
       body: JSON.stringify(tip)
     });
-    show('🔒 Tip odeslán. Teď už žádné změny. Hodně štěstí!');
-    document.querySelectorAll('input,select,button').forEach(x=>x.disabled=true);
-  } catch(e) {
-    btn.disabled = false;
-    show('❌ Tip se nepodařilo odeslat: ' + e.message);
+
+    message.textContent = "✅ Tip byl odeslán a uzamčen.";
+    message.className = "success";
+
+    document.querySelectorAll("input, select, button").forEach((element) => {
+      element.disabled = true;
+    });
+
+  } catch (error) {
+    console.error(error);
+
+    message.textContent = `❌ ${error.message}`;
+    message.className = "error";
+
+    button.disabled = false;
+    button.textContent = "🔒 Uzamknout tip";
   }
 }
+
+function init() {
+  createPartyInputs();
+  createSeatInputs();
+
+  fillCandidateSelect("jumper");
+  fillCandidateSelect("mostVotes");
+
+  const submit = document.getElementById("submit");
+
+  if (submit) {
+    submit.addEventListener("click", submitTip);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", init);
