@@ -21,31 +21,48 @@
 </div>
 <p class="muted">* bonusové skóre závisí na přesných pravidlech a případných shodách.</p>
 </section>
-
 <section class="card">
 <h2>🎯 Tvoje tipy</h2>
 <label>Přezdívka <input id="player" maxlength="30" placeholder="např. Rumový král"></label>
+
 <h3>🗳️ Výsledky kandidátek</h3>
+<p class="hint">Tipni, kolik procent hlasů získá každá kandidátka. Pro bodování se počítá celé procento.</p>
 <div id="partyPredictions"></div>
-<label>📊 Volební účast (%) <input id="turnout" type="number" min="0" max="100" step="1" placeholder="např. 62"></label>
+
+<label>📊 Volební účast (%)
+  <input id="turnout" type="number" min="0" max="100" step="1" placeholder="např. 62">
+</label>
+<p class="hint">Kolik procent oprávněných voličů podle tebe přijde k volbám?</p>
 
 <h3>🏛️ Mandáty</h3>
+<p class="hint">Tipni, kolik zastupitelů získá každá kandidátka. Celkem musíš rozdělit přesně 17 mandátů.</p>
 <div id="seatPredictions"></div>
 
 <h3>🚀 Bonusy</h3>
-<label>Skokan – kandidát s největším posunem
-<select id="jumper"></select></label>
+
+<label>Skokan voleb
+  <select id="jumper"></select>
+</label>
+<p class="hint">Který kandidát se oproti svému původnímu pořadí posune nejvýše? Pokud bude mít největší posun více kandidátů, počítají se všichni jako skokani.</p>
+
 <label>Nejvíce preferenčních hlasů
-<select id="mostVotes"></select></label>
+  <select id="mostVotes"></select>
+</label>
+<p class="hint">Který kandidát podle tebe získá ze všech kandidátů nejvíce preferenčních hlasů?</p>
+
 <label>Největší rozdíl v preferenčních hlasech
-<select id="biggestGap"></select></label>
+  <select id="biggestGap"></select>
+</label>
+<p class="hint">Který kandidát bude mít největší náskok v preferenčních hlasech před druhým nejúspěšnějším kandidátem?</p>
+
 <label>Přesný počet hlasů nejúspěšnějšího kandidáta
-<input id="topVotes" type="number" min="0" step="1" placeholder="např. 850"></label>
+  <input id="topVotes" type="number" min="0" step="1" placeholder="např. 850">
+</label>
+<p class="hint">Tipni přesný počet preferenčních hlasů, které získá kandidát s nejvyšším počtem preferenčních hlasů.</p>
 
 <button id="submit">🔒 Uzamknout tip</button>
 <div id="message"></div>
 </section>
-
 <section class="card">
 <h2>📜 Pravidla bodování</h2>
 <table><tbody>
@@ -60,7 +77,6 @@
 <tr><td>Přesné pořadí TOP 3 kandidátek</td><td>+15 b.</td></tr>
 </tbody></table>
 </section>
-
 <section class="card small">
 <h2>🏆 Leaderboard</h2>
 <p class="muted">Po uzamčení tipů bude tato část zobrazovat pořadí. Vyhodnocení skutečných výsledků doplníme po volbách.</p>
