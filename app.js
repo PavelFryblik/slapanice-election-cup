@@ -372,14 +372,15 @@ async function submitTip() {
     });
 
     if (message) {
-      message.textContent =
-        "✅ Tip byl odeslán a uzamčen.";
-
+      message.textContent = "✅ Tip byl odeslán a uzamčen.";
       message.className = "success";
     }
-
+    
+    button.textContent = "🔒 Tip uzamčen";
+    button.disabled = true;
+    
     document
-      .querySelectorAll("input, select, button")
+      .querySelectorAll("input, select")
       .forEach(element => {
         element.disabled = true;
       });
