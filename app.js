@@ -59,71 +59,51 @@ const PARTIES = [
 
 function createPartyInputs() {
   const container = document.getElementById("partyPredictions");
-  if (!container) return;
-
   container.innerHTML = "";
 
   PARTIES.forEach((party, i) => {
-    const label = document.createElement("label");
-    label.innerHTML = `
-      ${i + 1}. ${party.name}
-      <input id="party_${i + 1}_pct"
-             type="number"
-             min="0"
-             max="100"
-             step="1"
-             inputmode="numeric"
-             placeholder="%">
+    container.innerHTML += `
+      <label>
+        ${i + 1}. ${party.name}
+        <input
+          id="party_${i + 1}_pct"
+          type="number"
+          min="0"
+          max="100"
+          step="1"
+          placeholder="%"
+        >
+      </label>
     `;
-    container.appendChild(label);
   });
 }
 
 function createSeatInputs() {
   const container = document.getElementById("seatPredictions");
-  if (!container) return;
-
   container.innerHTML = "";
 
   PARTIES.forEach((party, i) => {
-    const label = document.createElement("label");
-    label.innerHTML = `
-      ${i + 1}. ${party.name}
-      <input id="party_${i + 1}_mandates"
-             type="number"
-             min="0"
-             max="17"
-             step="1"
-             inputmode="numeric"
-             placeholder="mandáty">
+    container.innerHTML += `
+      <label>
+        ${i + 1}. ${party.name}
+        <input
+          id="party_${i + 1}_mandates"
+          type="number"
+          min="0"
+          max="17"
+          step="1"
+          placeholder="mandáty"
+        >
+      </label>
     `;
-    container.appendChild(label);
   });
-}
-
-function allCandidates() {
-  const result = [];
-
-  PARTIES.forEach((party) => {
-    party.candidates.forEach((candidate, index) => {
-      result.push({
-        name: candidate,
-        party: party.name,
-        position: index + 1
-      });
-    });
-  });
-
-  return result;
 }
 
 function fillCandidateSelect(id) {
   const select = document.getElementById(id);
-  if (!select) return;
-
   select.innerHTML = '<option value="">— Vyber kandidáta —</option>';
 
-  PARTIES.forEach((party) => {
+  PARTIES.forEach(party => {
     const group = document.createElement("optgroup");
     group.label = party.name;
 
@@ -138,11 +118,10 @@ function fillCandidateSelect(id) {
   });
 }
 
-function validateIntegerInput(id, min, max) {
+function getInteger(id, min, max) {
   const element = document.getElementById(id);
-  if (!element) return null;
-
   const value = element.value.trim();
+
   if (value === "") return null;
 
   const number = Number(value);
@@ -155,47 +134,46 @@ function validateIntegerInput(id, min, max) {
 }
 
 function collectTip() {
-  const nickname = document.getElementById("player")?.value.trim();
+  const nickname = document.getElementById("player").value.trim();
 
   if (!nickname) {
     throw new Error("Vyplň přezdívku.");
   }
 
   const tip = {
-    nickname: nickname,
+    nickname,
 
-    party_1_pct: validateIntegerInput("party_1_pct", 0, 100),
-    party_2_pct: validateIntegerInput("party_2_pct", 0, 100),
-    party_3_pct: validateIntegerInput("party_3_pct", 0, 100),
-    party_4_pct: validateIntegerInput("party_4_pct", 0, 100),
-    party_5_pct: validateIntegerInput("party_5_pct", 0, 100),
-    party_6_pct: validateIntegerInput("party_6_pct", 0, 100),
+    party_1_pct: getInteger("party_1_pct", 0, 100),
+    party_2_pct: getInteger("party_2_pct", 0, 100),
+    party_3_pct: getInteger("party_3_pct", 0, 100),
+    party_4_pct: getInteger("party_4_pct", 0, 100),
+    party_5_pct: getInteger("party_5_pct", 0, 100),
+    party_6_pct: getInteger("party_6_pct", 0, 100),
 
-    turnout: validateIntegerInput("turnout", 0, 100),
+    turnout: getInteger("turnout", 0, 100),
 
-    party_1_mandates: validateIntegerInput("party_1_mandates", 0, 17),
-    party_2_mandates: validateIntegerInput("party_2_mandates", 0, 17),
-    party_3_mandates: validateIntegerInput("party_3_mandates", 0, 17),
-    party_4_mandates: validateIntegerInput("party_4_mandates", 0, 17),
-    party_5_mandates: validateIntegerInput("party_5_mandates", 0, 17),
-    party_6_mandates: validateIntegerInput("party_6_mandates", 0, 17),
+    party_1_mandates: getInteger("party_1_mandates", 0, 17),
+    party_2_mandates: getInteger("party_2_mandates", 0, 17),
+    party_3_mandates: getInteger("party_3_mandates", 0, 17),
+    party_4_mandates: getInteger("party_4_mandates", 0, 17),
+    party_5_mandates: getInteger("party_5_mandates", 0, 17),
+    party_6_mandates: getInteger("party_6_mandates", 0, 17),
 
-    jumper: document.getElementById("jumper")?.value || "",
-    most_votes: document.getElementById("mostVotes")?.value || "",
-    top_votes: validateIntegerInput("topVotes", 0, 100000),
-
-    // Zachováno kvůli kompatibilitě se současným Code.gs.
-    // Tato disciplína už není ve formuláři.
-    biggest_gap: ""
+    jumper: document.getElementById("jumper").value,
+    most_votes: document.getElementById("mostVotes").value,
+    top_votes: getInteger("topVotes", 0, 100000)
   };
 
-  const pctFields = [
-    "party_1_pct","party_2_pct","party_3_pct",
-    "party_4_pct","party_5_pct","party_6_pct"
+  const percentageFields = [
+    "party_1_pct",
+    "party_2_pct",
+    "party_3_pct",
+    "party_4_pct",
+    "party_5_pct",
+    "party_6_pct"
   ];
 
-  const missingPct = pctFields.some((id) => tip[id] === null);
-  if (missingPct) {
+  if (percentageFields.some(field => tip[field] === null)) {
     throw new Error("Vyplň procenta všech 6 kandidátek.");
   }
 
@@ -204,19 +182,27 @@ function collectTip() {
   }
 
   const mandateFields = [
-    "party_1_mandates","party_2_mandates","party_3_mandates",
-    "party_4_mandates","party_5_mandates","party_6_mandates"
+    "party_1_mandates",
+    "party_2_mandates",
+    "party_3_mandates",
+    "party_4_mandates",
+    "party_5_mandates",
+    "party_6_mandates"
   ];
 
-  const missingMandates = mandateFields.some((id) => tip[id] === null);
-  if (missingMandates) {
-    throw new Error("Rozděl všech 17 mandátů.");
+  if (mandateFields.some(field => tip[field] === null)) {
+    throw new Error("Vyplň počet mandátů u všech kandidátek.");
   }
 
-  const mandateSum = mandateFields.reduce((sum, id) => sum + tip[id], 0);
+  const mandateSum = mandateFields.reduce(
+    (sum, field) => sum + tip[field],
+    0
+  );
 
   if (mandateSum !== 17) {
-    throw new Error(`Mandáty musí dát dohromady přesně 17. Nyní máš ${mandateSum}.`);
+    throw new Error(
+      `Mandáty musí dát dohromady přesně 17. Nyní máš ${mandateSum}.`
+    );
   }
 
   if (!tip.jumper) {
@@ -228,7 +214,9 @@ function collectTip() {
   }
 
   if (tip.top_votes === null) {
-    throw new Error("Vyplň přesný počet hlasů nejúspěšnějšího kandidáta.");
+    throw new Error(
+      "Vyplň přesný počet hlasů nejúspěšnějšího kandidáta."
+    );
   }
 
   return tip;
@@ -242,8 +230,7 @@ async function submitTip() {
     const tip = collectTip();
 
     button.disabled = true;
-    button.textContent = "⏳ Odesílám…";
-
+    button.textContent = "⏳ Odesílám...";
     message.textContent = "";
 
     await fetch(APPS_SCRIPT_URL, {
@@ -258,9 +245,11 @@ async function submitTip() {
     message.textContent = "✅ Tip byl odeslán a uzamčen.";
     message.className = "success";
 
-    document.querySelectorAll("input, select, button").forEach((element) => {
-      element.disabled = true;
-    });
+    document
+      .querySelectorAll("input, select, button")
+      .forEach(element => {
+        element.disabled = true;
+      });
 
   } catch (error) {
     console.error(error);
@@ -280,11 +269,9 @@ function init() {
   fillCandidateSelect("jumper");
   fillCandidateSelect("mostVotes");
 
-  const submit = document.getElementById("submit");
-
-  if (submit) {
-    submit.addEventListener("click", submitTip);
-  }
+  document
+    .getElementById("submit")
+    .addEventListener("click", submitTip);
 }
 
 document.addEventListener("DOMContentLoaded", init);
