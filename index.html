@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Šlapanice Election Cup 2026</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="hero">
+  <div class="eyebrow">ŠLAPANICE • KOMUNÁLNÍ VOLBY 2026</div>
+  <h1>Election Cup <span>2026</span></h1>
+  <p>Tipni. Riskni. Vyhraj rum. 🥃</p>
+  <div class="count">Tipy se uzavírají před volbami 9.–10. 10. 2026.</div>
+</header>
+<main>
+<section class="card intro">
+<h2>🏆 O co hrajeme?</h2>
+<p>Tipuješ výsledky šesti kandidátek, mandáty, volební účast a několik bonusových kategorií. Po volbách se podle skutečných výsledků automaticky spočítají body.</p>
+<div class="grid rules">
+<div><b>6</b><span>kandidátek</span></div><div><b>17</b><span>mandátů</span></div><div><b>385+</b><span>max. bodů*</span></div>
+</div>
+<p class="muted">* bonusové skóre závisí na přesných pravidlech a případných shodách.</p>
+</section>
+
+<section class="card">
+<h2>🎯 Tvoje tipy</h2>
+<label>Přezdívka <input id="player" maxlength="30" placeholder="např. Rumový král"></label>
+<h3>🗳️ Výsledky kandidátek</h3>
+<div id="partyPredictions"></div>
+<label>📊 Volební účast (%) <input id="turnout" type="number" min="0" max="100" step="1" placeholder="např. 62"></label>
+
+<h3>🏛️ Mandáty</h3>
+<div id="seatPredictions"></div>
+
+<h3>🚀 Bonusy</h3>
+<label>Skokan – kandidát s největším posunem
+<select id="jumper"></select></label>
+<label>Nejvíce preferenčních hlasů
+<select id="mostVotes"></select></label>
+<label>Největší rozdíl v preferenčních hlasech
+<select id="biggestGap"></select></label>
+<label>Přesný počet hlasů nejúspěšnějšího kandidáta
+<input id="topVotes" type="number" min="0" step="1" placeholder="např. 850"></label>
+
+<button id="submit">🔒 Uzamknout tip</button>
+<div id="message"></div>
+</section>
+
+<section class="card">
+<h2>📜 Pravidla bodování</h2>
+<table><tbody>
+<tr><td>% strany – přesně</td><td>30 b.</td></tr>
+<tr><td>% strany – rozdíl 1 / 2 / 3 / 4–5 p. b.</td><td>20 / 15 / 10 / 5 b.</td></tr>
+<tr><td>Mandáty – přesně / rozdíl 1</td><td>20 / 10 b.</td></tr>
+<tr><td>Volební účast – přesně / ±1 / ±2 / ±3 / ±4–5 p. b.</td><td>30 / 20 / 15 / 10 / 5 b.</td></tr>
+<tr><td>Skokan</td><td>40 b.</td></tr>
+<tr><td>Nejvíce preferenčních hlasů</td><td>30 b.</td></tr>
+<tr><td>Největší rozdíl preferenčních hlasů</td><td>30 b.</td></tr>
+<tr><td>Přesný počet hlasů nejúspěšnějšího kandidáta</td><td>+20 b.</td></tr>
+<tr><td>Přesné pořadí TOP 3 kandidátek</td><td>+15 b.</td></tr>
+</tbody></table>
+</section>
+
+<section class="card small">
+<h2>🏆 Leaderboard</h2>
+<p class="muted">Po uzamčení tipů bude tato část zobrazovat pořadí. Vyhodnocení skutečných výsledků doplníme po volbách.</p>
+</section>
+</main>
+<footer>Data kandidátů: Město Šlapanice / volby.cz. Tento web je soukromá tipovací hra.</footer>
+<script src="app.js"></script>
+</body></html>
