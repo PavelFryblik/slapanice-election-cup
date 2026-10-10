@@ -86,7 +86,7 @@ function renderSummary(data) {
       <span>bodů průběžného lídra</span>
     </div>
     <div class="summary-item">
-      <strong>${formatPoints(435)}</strong>
+      <strong>${formatPoints(420)}</strong>
       <span>teoretické maximum</span>
     </div>
   `;
