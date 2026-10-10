@@ -302,3 +302,209 @@ footer {
     padding: 20px;
   }
 }
+
+/* Leaderboard */
+.leaderboard-status {
+  margin: 16px 0;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #f7f5f0;
+  color: #555;
+  font-size: 14px;
+}
+
+.leaderboard-status.success {
+  color: #18794e;
+  background: #edf8f1;
+}
+
+.leaderboard-status.error {
+  color: #b42318;
+  background: #fff0ef;
+}
+
+.leaderboard-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 18px 0 24px;
+}
+
+.summary-item {
+  padding: 16px 10px;
+  border-radius: 12px;
+  background: #f7f5f0;
+  text-align: center;
+  min-width: 0;
+}
+
+.summary-item strong {
+  display: block;
+  font-size: clamp(22px, 4vw, 32px);
+  overflow-wrap: anywhere;
+}
+
+.summary-item span {
+  display: block;
+  color: #777;
+  font-size: 12px;
+}
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.leaderboard-table {
+  min-width: 440px;
+}
+
+.leaderboard-table th {
+  padding: 12px 8px;
+  text-align: left;
+  border-bottom: 2px solid #ddd8cf;
+  font-size: 13px;
+}
+
+.leaderboard-table td {
+  padding: 13px 8px;
+  vertical-align: top;
+}
+
+.rank-number {
+  width: 48px;
+  font-weight: 750;
+}
+
+.player-name {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.total-points {
+  white-space: nowrap;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.rank-1 {
+  background: #fff8e7;
+}
+
+.rank-2 {
+  background: #f6f6f6;
+}
+
+.rank-3 {
+  background: #fff3eb;
+}
+
+.player-details summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 650;
+  color: #555;
+}
+
+.tip-detail {
+  min-width: 260px;
+  padding: 12px 0;
+}
+
+.tip-detail h4 {
+  margin: 16px 0 8px;
+}
+
+.tip-detail table {
+  font-size: 13px;
+}
+
+.tip-detail th,
+.tip-detail td {
+  padding: 8px 5px;
+  text-align: left;
+}
+
+.tip-detail td:last-child {
+  text-align: right;
+}
+
+.detail-grid,
+.score-breakdown {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.detail-grid > div,
+.score-breakdown > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px;
+  border-radius: 9px;
+  background: #f7f5f0;
+  min-width: 0;
+}
+
+.detail-grid span,
+.score-breakdown span {
+  color: #777;
+  font-size: 12px;
+}
+
+.detail-grid strong,
+.score-breakdown strong {
+  overflow-wrap: anywhere;
+}
+
+.score-breakdown > div:last-child {
+  grid-column: 1 / -1;
+  background: #171717;
+  color: #fff;
+}
+
+.score-breakdown > div:last-child span {
+  color: #ddd;
+}
+
+.leaderboard-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.refresh-button {
+  width: auto;
+  margin: 0;
+  padding: 10px 16px;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .leaderboard-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-item {
+    padding: 12px;
+  }
+
+  .detail-grid,
+  .score-breakdown {
+    grid-template-columns: 1fr;
+  }
+
+  .leaderboard-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .refresh-button {
+    width: 100%;
+  }
+}
